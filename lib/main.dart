@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'core/theme.dart';
-import 'screens/login/student_login.dart';
+import 'splash/splash_screen.dart';
+
 
 void main() {
   runApp(const MindforgeApp());
@@ -15,7 +16,7 @@ class MindforgeApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Mindforge',
       theme: MindforgeTheme.lightTheme,
-      home: const StudentLoginScreen(),
+      home: const SplashScreen(),
     );
   }
 }
