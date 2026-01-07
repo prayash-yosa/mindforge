@@ -8,21 +8,11 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> 
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 1500),
-      vsync: this,
-    )..repeat(reverse: true); 
-    
-
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 5), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -33,12 +23,6 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
@@ -46,25 +30,40 @@ class _SplashScreenState extends State<SplashScreen>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // App Logo
-            Container(
-              width: 120,
-              height: 120,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 20,
-                    spreadRadius: 2,
+            // Logo with Animation
+            TweenAnimationBuilder(
+              duration: const Duration(milliseconds: 1000),
+              tween: Tween<double>(begin: 0, end: 1),
+              builder: (context, value, child) {
+                return Opacity(
+                  opacity: value,
+                  child: Transform.scale(
+                    scale: 0.8 + (value * 0.2), // Scale from 0.8 to 1.0
+                    child: child,
                   ),
-                ],
-              ),
-              child: Icon(
-                Icons.school,
-                size: 60,
-                color: Theme.of(context).colorScheme.primary,
+                );
+              },
+              child: Container(
+                width: 160,
+                height: 160,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.15),
+                      blurRadius: 25,
+                      spreadRadius: 2,
+                    ),
+                  ],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Image.asset(
+                    'assets/images/Mindforge-logo.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
             ),
             
@@ -94,27 +93,23 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
             
-            const SizedBox(height: 10),
+            const SizedBox(height: 8),
             
             // Tagline
             const Text(
-              "AI Assisted Learning",
+              "AI Assisted Learning Platform",
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.white70,
               ),
             ),
             
-            const SizedBox(height: 50),
+            const SizedBox(height: 40),
             
-            // Animated Loading indicator with fade effect
-            FadeTransition(
-              opacity: _controller,
-              child: const CircularProgressIndicator(
-                color: Colors.white,
-                strokeWidth: 2,
-                backgroundColor: Colors.white30,
-              ),
+            // Loading indicator
+            const CircularProgressIndicator(
+              color: Colors.white,
+              strokeWidth: 2,
             ),
           ],
         ),
