@@ -12,7 +12,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             );
           },
-          child: Container(
+          child: SizedBox(
             width: 260, 
             height: 260,
             child: Image.asset(
