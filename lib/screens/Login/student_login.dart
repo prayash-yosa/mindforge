@@ -27,7 +27,7 @@ class StudentLoginScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 60),
                 
-                Container(
+                SizedBox(
                   width: 200,
                   height: 200,
                   child: Image.asset(

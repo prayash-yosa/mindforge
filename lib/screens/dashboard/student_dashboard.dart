@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mindforge_app/screens/subjects/subjects_screen.dart';
+import 'package:mindforge_app/screens/homework/homework_screen.dart';
 import '../../widgets/premium_app_bar.dart';
+import 'package:mindforge_app/screens/attendance/attendance_screen.dart';
+import 'package:mindforge_app/screens/contact/contact_screen.dart';
 
 class StudentDashboardScreen extends StatelessWidget {
   const StudentDashboardScreen({super.key});
@@ -46,26 +49,20 @@ class StudentDashboardScreen extends StatelessWidget {
                 // Compact Profile Card
                 _compactProfileCard(),
                 const SizedBox(height: 16),
-                
+
                 // Compact Stats Row
                 _compactStatsRow(),
                 const SizedBox(height: 24),
-                
+
                 const Text(
                   "Quick Access",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 16),
-                
+
                 // Grid Section
-                Container(
-                  color: Colors.white,
-                  child: _gridMenu(),
-                ),
-                
+                Container(color: Colors.white, child: _gridMenu()),
+
                 const SizedBox(height: 40),
               ],
             ),
@@ -81,9 +78,7 @@ class StudentDashboardScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: accentColor.withOpacity(0.05),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: accentColor.withOpacity(0.1),
-        ),
+        border: Border.all(color: accentColor.withOpacity(0.1)),
       ),
       child: Row(
         children: [
@@ -94,11 +89,7 @@ class StudentDashboardScreen extends StatelessWidget {
               color: accentColor,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Icon(
-              Icons.person,
-              color: Colors.white,
-              size: 24,
-            ),
+            child: const Icon(Icons.person, color: Colors.white, size: 24),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -107,26 +98,17 @@ class StudentDashboardScreen extends StatelessWidget {
               children: [
                 const Text(
                   "Rahul Sharma",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   "Class 10 • ID: STU10417",
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey.shade600,
-                  ),
+                  style: TextStyle(fontSize: 13, color: Colors.grey.shade600),
                 ),
               ],
             ),
           ),
-          Icon(
-            Icons.chevron_right,
-            color: Colors.grey.shade400,
-          ),
+          Icon(Icons.chevron_right, color: Colors.grey.shade400),
         ],
       ),
     );
@@ -170,11 +152,7 @@ class StudentDashboardScreen extends StatelessWidget {
                 color: accentColor.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Icon(
-                icon,
-                color: accentColor,
-                size: 18,
-              ),
+              child: Icon(icon, color: accentColor, size: 18),
             ),
             const SizedBox(width: 10),
             Text(
@@ -254,7 +232,7 @@ class StudentDashboardScreen extends StatelessWidget {
       itemCount: items.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 16,
+        crossAxisSpacing: 11,
         mainAxisSpacing: 16,
         childAspectRatio: 1.1,
       ),
@@ -271,12 +249,23 @@ class StudentDashboardScreen extends StatelessWidget {
         if (item["title"] == "Subjects") {
           Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (_) => const SubjectsScreen(),
-            ),
+            MaterialPageRoute(builder: (_) => const SubjectsScreen()),
           );
-        } else {
-          print("Tapped: ${item["title"]}");
+        } else if (item["title"] == "Homework") {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const HomeworkScreen()),
+          );
+        } else if (item["title"] == "Attendance") {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const AttendanceScreen()),
+          );
+        } else if (item["title"] == "Contact Us") {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const ContactScreen()),
+          );
         }
       },
       child: Container(
@@ -308,7 +297,7 @@ class StudentDashboardScreen extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -338,7 +327,7 @@ class StudentDashboardScreen extends StatelessWidget {
                           size: 26,
                         ),
                       ),
-                      
+
                       if (item["badge"] != null)
                         Container(
                           padding: const EdgeInsets.symmetric(
@@ -360,7 +349,7 @@ class StudentDashboardScreen extends StatelessWidget {
                         ),
                     ],
                   ),
-                  
+
                   Text(
                     item["title"],
                     style: TextStyle(

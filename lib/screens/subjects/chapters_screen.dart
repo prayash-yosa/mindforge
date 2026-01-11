@@ -17,15 +17,104 @@ class ChaptersScreen extends StatelessWidget {
     required this.totalChapters,
   });
 
+  // Function to get chapters based on subject
+  List<Map<String, dynamic>> _getChaptersForSubject() {
+    switch (subjectName) {
+      case 'Mathematics':
+        return [
+          {"title": "Commercial Mathematics", "completed": true, "duration": "4 hours"},
+          {"title": "Quadratic Equations", "completed": true, "duration": "3 hours"},
+          {"title": "Ratio and Proportion", "completed": true, "duration": "2.5 hours"},
+          {"title": "Factorisation", "completed": true, "duration": "3 hours"},
+          {"title": "Matrices", "completed": true, "duration": "2.5 hours"},
+          {"title": "Arithmetic & Geometric Progression", "completed": false, "duration": "3.5 hours"},
+          {"title": "Co-ordinate Geometry", "completed": false, "duration": "4 hours"},
+          {"title": "Similarity", "completed": false, "duration": "3 hours"},
+          {"title": "Circles", "completed": false, "duration": "4 hours"},
+          {"title": "Trigonometry", "completed": false, "duration": "5 hours"},
+          {"title": "Statistics", "completed": false, "duration": "3 hours"},
+          {"title": "Probability", "completed": false, "duration": "2.5 hours"},
+        ];
+      
+      case 'Science':
+        return [
+          {"title": "Force, Work & Energy", "completed": true, "duration": "4 hours"},
+          {"title": "Light", "completed": true, "duration": "5 hours"},
+          {"title": "Sound", "completed": true, "duration": "3 hours"},
+          {"title": "Electricity & Magnetism", "completed": true, "duration": "6 hours"},
+          {"title": "Heat", "completed": false, "duration": "4 hours"},
+          {"title": "Modern Physics", "completed": false, "duration": "3 hours"},
+          {"title": "Chemical Reactions", "completed": false, "duration": "4 hours"},
+          {"title": "Acids, Bases & Salts", "completed": false, "duration": "3.5 hours"},
+          {"title": "Metals & Non-Metals", "completed": false, "duration": "3 hours"},
+          {"title": "Periodic Classification", "completed": false, "duration": "3 hours"},
+        ];
+      
+      case 'English':
+        return [
+          {"title": "Grammar: Tenses & Modals", "completed": true, "duration": "3 hours"},
+          {"title": "Grammar: Prepositions & Conjunctions", "completed": true, "duration": "2.5 hours"},
+          {"title": "Composition: Letter Writing", "completed": true, "duration": "3 hours"},
+          {"title": "Composition: Essay Writing", "completed": true, "duration": "4 hours"},
+          {"title": "The Merchant of Venice - Act I", "completed": false, "duration": "3 hours"},
+          {"title": "The Merchant of Venice - Act II", "completed": false, "duration": "3 hours"},
+          {"title": "The Merchant of Venice - Act III", "completed": false, "duration": "3 hours"},
+          {"title": "The Merchant of Venice - Act IV", "completed": false, "duration": "3 hours"},
+          {"title": "The Merchant of Venice - Act V", "completed": false, "duration": "3 hours"},
+          {"title": "Poetry: Comprehension & Analysis", "completed": false, "duration": "4 hours"},
+        ];
+      
+      case 'Social Studies':
+        return [
+          {"title": "The Indian National Movement", "completed": true, "duration": "5 hours"},
+          {"title": "World War I & II", "completed": true, "duration": "4 hours"},
+          {"title": "The Indian Constitution", "completed": true, "duration": "4 hours"},
+          {"title": "Union Executive & Legislature", "completed": false, "duration": "4 hours"},
+          {"title": "The Judiciary", "completed": false, "duration": "3 hours"},
+          {"title": "Indian Geography: Climate", "completed": false, "duration": "3 hours"},
+          {"title": "Indian Geography: Resources", "completed": false, "duration": "3 hours"},
+          {"title": "Transport & Communication", "completed": false, "duration": "2.5 hours"},
+        ];
+      
+      case 'Computer Science':
+        return [
+          {"title": "Revision of Class 9 Concepts", "completed": true, "duration": "3 hours"},
+          {"title": "Class as Basis of Computation", "completed": true, "duration": "4 hours"},
+          {"title": "User-Defined Methods", "completed": true, "duration": "5 hours"},
+          {"title": "Constructors", "completed": false, "duration": "4 hours"},
+          {"title": "Library Classes", "completed": false, "duration": "3 hours"},
+          {"title": "Encapsulation", "completed": false, "duration": "3 hours"},
+          {"title": "Arrays", "completed": false, "duration": "5 hours"},
+          {"title": "String Handling", "completed": false, "duration": "4 hours"},
+        ];
+      
+      case 'Hindi':
+        return [
+          {"title": "व्याकरण: काल", "completed": true, "duration": "3 hours"},
+          {"title": "व्याकरण: वाच्य", "completed": true, "duration": "2.5 hours"},
+          {"title": "रचना: पत्र लेखन", "completed": true, "duration": "2.5 hours"},
+          {"title": "रचना: निबंध लेखन", "completed": false, "duration": "3 hours"},
+          {"title": "कहानी: बड़े घर की बेटी", "completed": false, "duration": "2 hours"},
+          {"title": "कहानी: धुली-धपड़ी सड़कें", "completed": false, "duration": "2 hours"},
+          {"title": "कविता: अक्षर-ज्ञान", "completed": false, "duration": "2 hours"},
+          {"title": "कविता: मेरी माँ", "completed": false, "duration": "2 hours"},
+        ];
+      
+      default:
+        // Fallback chapters if subject not listed
+        return [
+          {"title": "Introduction", "completed": true, "duration": "2 hours"},
+          {"title": "Basic Concepts", "completed": true, "duration": "3 hours"},
+          {"title": "Advanced Topics", "completed": true, "duration": "4 hours"},
+          {"title": "Practice Exercises", "completed": false, "duration": "2 hours"},
+          {"title": "Revision", "completed": false, "duration": "1.5 hours"},
+        ];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> chapters = [
-      {"title": "Introduction", "completed": true, "duration": "2 hours"},
-      {"title": "Basic Concepts", "completed": true, "duration": "3 hours"},
-      {"title": "Advanced Topics", "completed": true, "duration": "4 hours"},
-      {"title": "Practice Exercises", "completed": false, "duration": "2 hours"},
-      {"title": "Revision", "completed": false, "duration": "1.5 hours"},
-    ];
+    final chapters = _getChaptersForSubject();
 
     return Scaffold(
       appBar: PremiumAppBar(
@@ -37,7 +126,7 @@ class ChaptersScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Fixed Header Section
+            // Subject Header
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
               child: Container(
@@ -78,7 +167,7 @@ class ChaptersScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Progress: ${(progress * 100).toInt()}% • $totalChapters Chapters",
+                            "Progress: ${(progress * 100).toInt()}% • ${chapters.length} Chapters",
                             style: TextStyle(
                               fontSize: 13,
                               color: Colors.grey.shade600,
@@ -110,7 +199,7 @@ class ChaptersScreen extends StatelessWidget {
               ),
             ),
             
-            // Chapter Title (Fixed)
+            // Chapter Title
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
               child: Column(
@@ -135,7 +224,7 @@ class ChaptersScreen extends StatelessWidget {
               ),
             ),
             
-            // Scrollable Chapters List Only
+            // Scrollable Chapters List
             Expanded(
               child: Container(
                 color: Colors.white,
@@ -154,6 +243,7 @@ class ChaptersScreen extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
+                          // Chapter Number
                           Container(
                             width: 40,
                             height: 40,
@@ -175,6 +265,7 @@ class ChaptersScreen extends StatelessWidget {
                           
                           const SizedBox(width: 16),
                           
+                          // Chapter Details
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -198,6 +289,7 @@ class ChaptersScreen extends StatelessWidget {
                             ),
                           ),
                           
+                          // Completion Status
                           Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 12,
