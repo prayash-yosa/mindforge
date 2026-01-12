@@ -170,7 +170,7 @@ class RoleSelectionScreen extends StatelessWidget {
                 ),
                 
                 // Parent Role Button
-                Container(
+                SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
