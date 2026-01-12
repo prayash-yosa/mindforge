@@ -389,7 +389,7 @@ class ParentDashboardScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 16),
-                      ..._feeDetails.map((fee) => _buildFeeItem(fee)).toList(),
+                      ..._feeDetails.map((fee) => _buildFeeItem(fee)),
                       const SizedBox(height: 16),
                       SizedBox(
                         width: double.infinity,
@@ -432,7 +432,7 @@ class ParentDashboardScreen extends StatelessWidget {
                 // Activities List
                 ..._recentActivities
                     .map((activity) => _buildActivityItem(activity))
-                    .toList(),
+                    ,
 
                 const SizedBox(height: 30),
 
@@ -704,7 +704,7 @@ class ParentDashboardScreen extends StatelessWidget {
                       contentPadding: EdgeInsets.zero,
                     ),
                   )
-                  .toList(),
+                  ,
             ],
           ),
         ),
@@ -813,7 +813,7 @@ class ParentDashboardScreen extends StatelessWidget {
                       ),
                     ),
                   )
-                  .toList(),
+                  ,
             ],
           ),
         ),
