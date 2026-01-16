@@ -107,7 +107,7 @@ class ContactScreen extends StatelessWidget {
                     _buildContactCard(
                       icon: Icons.language_outlined,
                       title: 'Website',
-                      subtitle: 'www.mindforge.com',
+                      subtitle: 'www.mindforge.guru',
                       color: Colors.purple,
                       onTap: _launchWebsite,
                     ),
