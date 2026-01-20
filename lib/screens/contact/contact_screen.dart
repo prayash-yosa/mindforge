@@ -34,7 +34,7 @@ class ContactScreen extends StatelessWidget {
   }
 
   Future<void> _launchWebsite() async {
-    final Uri websiteUri = Uri.parse('https://www.mindforge.guru');
+    final Uri websiteUri = Uri.parse('https://www.mindforge.com');
     if (await canLaunchUrl(websiteUri)) {
       await launchUrl(websiteUri);
     }
